@@ -1,0 +1,15 @@
+.dist
+.env
+crop_label_mapping.pkl
+crop_prob_model.pkl
+fertilizer.csv
+optimized_crop_model.pkl
+
+potato_disease_model.h5
+apple_disease_model.h5
+grape_disease_model.h5
+corn_disease_model.h5
+cherry_disease_model.h5
+models
+
+
