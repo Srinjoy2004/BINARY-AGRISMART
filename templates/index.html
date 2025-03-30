@@ -350,6 +350,211 @@
     </div>
   </section>
 
+  <!-- Crop production Prediction -->
+<section id="contact" class="py-8">
+  <div class="container">
+      <div class="col-lg-5">
+          <span class="badge mb-2">Get In Touch</span>
+          <h2 class="fw-bold mb-4">Crop Production Prediction</h2>
+          <p class="lead mb-4">Have questions or need assistance? We're here to help.</p>
+      </div>
+      <div class="row g-5">
+          <div class="card mb-4">
+              <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                  
+                  <form id="crop-prediction-form">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="state" class="form-label">State</label>
+                        <select class="form-select" id="state" required>
+                            <option value="" selected disabled>Select a state</option>
+                            <option value="andhra_pradesh">Andhra Pradesh</option>
+                            <option value="arunachal_pradesh">Arunachal Pradesh</option>
+                            <option value="assam">Assam</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="chhattisgarh">Chhattisgarh</option>
+                            <option value="goa">Goa</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="himachal_pradesh">Himachal Pradesh</option>
+                            <option value="jharkhand">Jharkhand</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="madhya_pradesh">Madhya Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="manipur">Manipur</option>
+                            <option value="meghalaya">Meghalaya</option>
+                            <option value="mizoram">Mizoram</option>
+                            <option value="nagaland">Nagaland</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="sikkim">Sikkim</option>
+                            <option value="tamil_nadu">Tamil Nadu</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="tripura">Tripura</option>
+                            <option value="uttar_pradesh">Uttar Pradesh</option>
+                            <option value="uttarakhand">Uttarakhand</option>
+                            <option value="west_bengal">West Bengal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6">
+                      <label for="district" class="form-label">District</label>
+                      <select class="form-select" id="district" required>
+                          <option value="" selected disabled>Select a District</option>
+                          <option value="ahmedabad">Ahmedabad</option>
+                          <option value="bengaluru_urban">Bengaluru Urban</option>
+                          <option value="chennai">Chennai</option>
+                          <option value="kolkata">Kolkata</option>
+                          <option value="mumbai">Mumbai</option>
+                          <option value="pune">Pune</option>
+                          <option value="jaipur">Jaipur</option>
+                          <option value="hyderabad">Hyderabad</option>
+                          <option value="lucknow">Lucknow</option>
+                          <option value="bhopal">Bhopal</option>
+                          <option value="patna">Patna</option>
+                          <option value="indore">Indore</option>
+                          <option value="nagpur">Nagpur</option>
+                          <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                          <option value="kochi">Kochi</option>
+                          <option value="coimbatore">Coimbatore</option>
+                          <option value="visakhapatnam">Visakhapatnam</option>
+                          <option value="vadodara">Vadodara</option>
+                          <option value="nashik">Nashik</option>
+                          <option value="kanpur">Kanpur</option>
+                          <option value="surat">Surat</option>
+                          <option value="meerut">Meerut</option>
+                          <option value="ludhiana">Ludhiana</option>
+                          <option value="amritsar">Amritsar</option>
+                          <option value="varanasi">Varanasi</option>
+                          <option value="allahabad">Allahabad</option>
+                          <option value="gwalior">Gwalior</option>
+                          <option value="jodhpur">Jodhpur</option>
+                          <option value="madurai">Madurai</option>
+                          <option value="srinagar">Srinagar</option>
+                          <option value="guwahati">Guwahati</option>
+                          <option value="ranchi">Ranchi</option>
+                          <option value="bhubaneswar">Bhubaneswar</option>
+                          <option value="dehradun">Dehradun</option>
+                          <option value="shimla">Shimla</option>
+                          <option value="agartala">Agartala</option>
+                          <option value="panaji">Panaji</option>
+                          <option value="itanagar">Itanagar</option>
+                          <option value="gangtok">Gangtok</option>
+                          <option value="imphal">Imphal</option>
+                          <option value="aizawl">Aizawl</option>
+                          <option value="kohima">Kohima</option>
+                          <option value="shillong">Shillong</option>
+                          <option value="port_blair">Port Blair</option>
+                          <option value="silchar">Silchar</option>
+                          <option value="belgaum">Belgaum</option>
+                          <option value="ajmer">Ajmer</option>
+                          <option value="warangal">Warangal</option>
+                      </select>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label for="crop" class="form-label">Crop</label>
+                    <select class="form-select" id="crop" required>
+                        <option value="" selected disabled>Select a Crop</option>
+                        <option value="arecanut">Arecanut</option>
+                        <option value="arhar_tur">Arhar/Tur</option>
+                        <option value="banana">Banana</option>
+                        <option value="black_pepper">Black pepper</option>
+                        <option value="cashewnut">Cashewnut</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="cowpea">Cowpea (Lobia)</option>
+                        <option value="dry_chillies">Dry chillies</option>
+                        <option value="ginger">Ginger</option>
+                        <option value="groundnut">Groundnut</option>
+                        <option value="maize">Maize</option>
+                        <option value="moong">Moong (Green Gram)</option>
+                        <option value="oilseeds_total">Oilseeds total</option>
+                        <option value="other_kharif_pulses">Other Kharif pulses</option>
+                        <option value="other_oilseeds">Other oilseeds</option>
+                        <option value="rapeseed_mustard">Rapeseed & Mustard</option>
+                        <option value="rice">Rice</option>
+                        <option value="sesamum">Sesamum</option>
+                        <option value="sugarcane">Sugarcane</option>
+                        <option value="sunflower">Sunflower</option>
+                        <option value="sweet_potato">Sweet potato</option>
+                        <option value="tapioca">Tapioca</option>
+                        <option value="turmeric">Turmeric</option>
+                        <option value="urad">Urad</option>
+                        <option value="bajra">Bajra</option>
+                        <option value="castor_seed">Castor seed</option>
+                        <option value="coriander">Coriander</option>
+                        <option value="cotton">Cotton (lint)</option>
+                        <option value="garlic">Garlic</option>
+                        <option value="gram">Gram</option>
+                        <option value="guar_seed">Guar seed</option>
+                        <option value="horse_gram">Horse-gram</option>
+                        <option value="jowar">Jowar</option>
+                        <option value="linseed">Linseed</option>
+                        <option value="masoor">Masoor</option>
+                        <option value="mesta">Mesta</option>
+                        <option value="niger_seed">Niger seed</option>
+                        <option value="onion">Onion</option>
+                        <option value="other_rabi_pulses">Other Rabi pulses</option>
+                        <option value="potato">Potato</option>
+                        <option value="ragi">Ragi</option>
+                        <option value="safflower">Safflower</option>
+                        <option value="sannhamp">Sannhamp</option>
+                        <option value="small_millets">Small millets</option>
+                        <option value="soyabean">Soyabean</option>
+                        <option value="tobacco">Tobacco</option>
+                        <option value="wheat">Wheat</option>
+                        <option value="peas_beans">Peas & beans (Pulses)</option>
+                        <option value="jute">Jute</option>
+                        <option value="barley">Barley</option>
+                        <option value="khesari">Khesari</option>
+                        <option value="moth">Moth</option>
+                        <option value="other_cereals">Other Cereals</option>
+                        <option value="cardamom">Cardamom</option>
+                        <option value="other_summer_pulses">Other Summer Pulses</option>
+                    </select>
+                </div>
+                
+                        <div class="col-md-6">
+                          <label for="season" class="form-label">Season</label>
+                          <select class="form-select" id="season" required>
+                              <option value="" selected disabled>Select a Season</option>
+                              <option value="summer">Summer</option>
+                              <option value="monsoon">Monsoon</option>
+                              <option value="autumn">Autumn</option>
+                              <option value="winter">Winter</option>
+                              <option value="spring">Spring</option>
+                              <option value="pre_winter">Pre-Winter</option>
+                          </select>
+                      </div>
+                      
+                        <div class="col-md-6">
+                          <label for="area" class="form-label">Area :</label>
+                          <input type="number" class="form-control" id="area" required>
+                        </div>
+                        <div class="col-md-6">
+                          <label for="year" class="form-label">Year :</label>
+                          <input type="number" class="form-control" id="year" value=2024 required>
+                        </div>
+                      <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-primary w-100">Predict</button>
+                      </div>
+                      <!-- Fertilizer Advice Section (Hidden Initially) -->
+                      <div id="production-advice-section" class="hidden">
+                          <h4>Production Predicton</h4>
+                          <p id="production-advice"></p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>
+</section>
+
   <!-- Chatbot Section -->
   <section id="chatbot" class="py-8">
     <div class="container">
