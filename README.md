@@ -5,6 +5,10 @@ AgriSmarti s an intelligent agricultural assistant designed to help farmers and 
 
 ---
 
+
+📌 *
+📌 ** 📌
+
 ## ✨ Features
 
 ### 🌱 Crop Recommendation System
