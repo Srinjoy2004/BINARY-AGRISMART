@@ -40,32 +40,23 @@ except Exception as e:
     raise
 
 # Configure Gemini API
+# Configure Gemini API
 os.environ["GOOGLE_API_KEY"] = "AIzaSyDD8QW1BggDVVMLteDygHCHrD6Ff9Dy0e8 "
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-def gemini_fertilizer_advice(crop, n, p, k, ideal_n, ideal_p, ideal_k):
-    def compare(val, ideal, name):
-        if val < ideal:
-            return f"{name} is low ({val} < {ideal})"
-        elif val > ideal:
-            return f"{name} is high ({val} > {ideal})"
-        else:
-            return f"{name} is optimal ({val} = {ideal})"
-
-    n_status = compare(n, ideal_n, "Nitrogen")
-    p_status = compare(p, ideal_p, "Phosphorus")
-    k_status = compare(k, ideal_k, "Potassium")
+def gemini_fertilizer_advice(predicted_crop, n, p, k, ideal_n, ideal_p, ideal_k):
     """
     Uses Google's Gemini AI to generate fertilizer recommendations.
     """
     try:
         prompt = f"""
-    A farmer wants to grow {crop}.
-    Ideal NPK values: Nitrogen: {ideal_n}, Phosphorus: {ideal_p}, Potassium: {ideal_k}.
-    Current soil values: Nitrogen: {n} → {n_status}, Phosphorus: {p} → {p_status}, Potassium: {k} → {k_status}.
-    Based on this, suggest what nutrients are deficient or excessive and recommend suitable fertilizers.
-    Keep it concise within 50 words. Use Indian agricultural context. No headings or markdown.
-    """
+        A farmer wants to grow {predicted_crop}.
+        Ideal soil NPK values: Nitrogen={ideal_n}, Phosphorus={ideal_p}, Potassium={ideal_k}.
+        Current soil levels: Nitrogen={n}, Phosphorus={p}, Potassium={k}.
+        Explain what nutrients are deficient and recommend appropriate fertilizers.
+        Include names of commonly used fertilizers in India.
+        Keep it short within 50 words.
+        """
         model = genai.GenerativeModel("gemini-2.0-flash")
         response = model.generate_content(prompt)
         return response.text.strip() if response.text else "Could not generate fertilizer advice. Try again later."
@@ -254,11 +245,11 @@ def dashboard():
 
 
 # Load trained model and column names
-model = pickle.load(open("prediction_model.pkl", "rb"))
+model_price = pickle.load(open("prediction_model.pkl", "rb"))
 training_columns = list(pd.read_csv("encoded_feature_columns.csv").columns)
 
 # Validate if the loaded model is valid
-if not isinstance(model, (RandomForestRegressor, DecisionTreeRegressor)):
+if not isinstance(model_price, (RandomForestRegressor, DecisionTreeRegressor)):
     raise TypeError("Loaded model is not a valid RandomForestRegressor or DecisionTreeRegressor. Please check the model file.")
 
 # Load dataset and extract unique values for dropdowns
@@ -297,11 +288,11 @@ def predict_production(state, district, crop, season, area, year):
     row_encoded = row_encoded[training_columns]
 
     # Ensure model is valid before prediction
-    if not isinstance(model, (RandomForestRegressor, DecisionTreeRegressor)):
+    if not isinstance(model_price, (RandomForestRegressor, DecisionTreeRegressor)):
         return "Error: Model is not properly loaded. Please check the model file."
     
     # Make prediction
-    pred = model.predict(row_encoded)[0]
+    pred = model_price.predict(row_encoded)[0]
     return f"Predicted Production: {pred:.2f} tonnes"
 
 
