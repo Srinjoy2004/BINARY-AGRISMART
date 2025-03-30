@@ -6,7 +6,7 @@ AgriSmarti s an intelligent agricultural assistant designed to help farmers and 
 ---
 
 
-📌*
+ 
 📌 *home_page.png* 📌
 
 ## ✨ Features
