@@ -13,3 +13,7 @@ cherry_disease_model.h5
 models
 
 
+apy.csv
+prediction_model.pkl
+encoded_feature_columns.csv
+

@@ -372,3 +372,51 @@ document.getElementById("predict-disease").addEventListener("click", async funct
     });
   }
 });
+
+
+
+//price prediction
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("price-prediction").addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      let state = document.getElementById("state").value;
+      let district = document.getElementById("district").value;
+      let crop = document.getElementById("crop").value;
+      let season = document.getElementById("season").value;
+      let area = document.getElementById("area").value;
+      let year = document.getElementById("year").value;
+
+      if (!state || !district || !crop || !season || !area || !year) {
+          alert("Please fill in all fields.");
+          return;
+      }
+
+      let requestData = {
+          state: state,
+          district: district,
+          crop: crop,
+          season: season,
+          area: area,
+          year: year
+      };
+
+      fetch("/predict-price", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(requestData)
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.error) {
+              alert("Error: " + data.error);
+          } else {
+              document.getElementById("production-advice").innerHTML = `<strong>${data.prediction}</strong>`;
+          }
+      })
+      .catch(error => console.error("Error:", error));
+  });
+});

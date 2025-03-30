@@ -11,6 +11,12 @@ import tensorflow as tf
 import numpy as np
 import cv2
 import os
+from flask import Flask, request, jsonify, render_template
+import pandas as pd
+import pickle
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.tree import DecisionTreeRegressor
 
 # Load environment variables
 load_dotenv()
@@ -245,6 +251,74 @@ def predict():
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+
+# Load trained model and column names
+model = pickle.load(open("prediction_model.pkl", "rb"))
+training_columns = list(pd.read_csv("encoded_feature_columns.csv").columns)
+
+# Validate if the loaded model is valid
+if not isinstance(model, (RandomForestRegressor, DecisionTreeRegressor)):
+    raise TypeError("Loaded model is not a valid RandomForestRegressor or DecisionTreeRegressor. Please check the model file.")
+
+# Load dataset and extract unique values for dropdowns
+apy_df = pd.read_csv("APY.csv", encoding="utf-8")
+apy_df.rename(columns=lambda x: x.strip(), inplace=True)
+states = sorted(apy_df['State'].dropna().unique().tolist())
+districts = sorted(apy_df['District'].dropna().unique().tolist())
+crops = sorted(apy_df['Crop'].dropna().unique().tolist())
+seasons = sorted(apy_df['Season'].dropna().unique().tolist())
+
+# Prediction function
+def predict_production(state, district, crop, season, area, year):
+    if area <= 0:
+        return "Error: Area must be greater than zero."
+    if year < 2000 or year > 2050:
+        return "Error: Year should be within a reasonable range."
+
+    row = pd.DataFrame({
+        'State': [state],
+        'District': [district],
+        'Crop_Year': [year],
+        'Season': [season],
+        'Crop': [crop],
+        'Area': [area]
+    })
+    
+    # Encode categorical variables
+    row_encoded = pd.get_dummies(row)
+    
+    # Ensure all required columns exist
+    for col in training_columns:
+        if col not in row_encoded.columns:
+            row_encoded[col] = 0
+    
+    # Reorder columns to match training data
+    row_encoded = row_encoded[training_columns]
+
+    # Ensure model is valid before prediction
+    if not isinstance(model, (RandomForestRegressor, DecisionTreeRegressor)):
+        return "Error: Model is not properly loaded. Please check the model file."
+    
+    # Make prediction
+    pred = model.predict(row_encoded)[0]
+    return f"Predicted Production: {pred:.2f} tonnes"
+
+
+
+@app.route('/predict-price', methods=['POST'])
+def predict_price():
+    data = request.json
+    state = data['state']
+    district = data['district']
+    crop = data['crop']
+    season = data['season']
+    area = float(data['area'])
+    year = int(data['year'])
+
+    prediction = predict_production(state, district, crop, season, area, year)
+    return jsonify({"prediction": prediction})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
