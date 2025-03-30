@@ -5,6 +5,10 @@ AgriSmarti s an intelligent agricultural assistant designed to help farmers and 
 
 ---
 
+
+![image](home_page.png)  
+ 
+
 ## ✨ Features
 
 ### 🌱 Crop Recommendation System
@@ -12,14 +16,14 @@ AgriSmarti s an intelligent agricultural assistant designed to help farmers and 
 - Predicts the top 5 best crops suitable for the given soil conditions.
 - Provides fertilizer recommendations based on the selected crop.
 
-📌 *UI Image Placeholder* 📌
+ 
 
 ### 🍃 Crop Disease Detection
 - Accepts leaf images of crops as input.
 - Detects if the crop is affected by any disease using a trained machine learning model.
 - Provides insights into the possible disease and preventive measures.
 
-📌 *UI Image Placeholder* 📌
+ 
 
 ### 🤖 AI Chatbot Assistant
 A conversational chatbot designed to assist users with:
@@ -27,7 +31,7 @@ A conversational chatbot designed to assist users with:
 - Disease identification & treatment suggestions
 - General agricultural guidance
 
-📌 *UI Image Placeholder* 📌
+ 
 
 ### 📊 Dashboard
 - Real-time Soil Nutrition Chart (Future update after hardware integration)
@@ -39,8 +43,8 @@ A conversational chatbot designed to assist users with:
 - Uses historical and real-time data to predict expected crop yield.
 - Provides insights into potential earnings based on market prices.
 - Helps farmers make informed decisions on crop selection and sales strategies.
-
-📌 *Yield Prediction Graph Placeholder* 📌
+ 
+![image](features.png)  
 
 ---
 
